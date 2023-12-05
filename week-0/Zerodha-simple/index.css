@@ -1,0 +1,184 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+    /* colors */
+    --clr-primary-soft-orange: 35, 77%, 62%;
+    --clr-primary-soft-red: 5, 85%, 63%;
+    --clr-off-white: 36, 100%, 99%;
+    --clr-white: 0 0% 100%;
+    --clr-grayish-blue: 236, 13%, 42%;
+    --clr-very-dark-blue: 240, 100%, 5%;
+  
+    /* font-sizes */
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1rem;
+    --fs-500: 1.75rem;
+    --fs-400: 0.9375rem;
+  
+    /* font-family */
+  
+    --ff-sans-inter: "Inter", sans-serif;
+  }
+  
+  @media (min-width: 35em) {
+    :root {
+      --fs-800: 5rem;
+      --fs-700: 2.5rem;
+      --fs-600: 1.5rem;
+      --fs-400: 1rem;
+    }
+  }
+  
+  @media (min-width: 45em) {
+    :root {
+      /* font-sizes */
+      --fs-800: 6.25rem;
+      --fs-700: 3.5rem;
+      --fs-600: 2rem;
+      --fs-400: 1.125rem;
+    }
+  }
+  /* ------------------- */
+  /* Reset               */
+  /* ------------------- */
+  
+  /* Box sizing */
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Reset margins */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  picture {
+    margin: 0;
+  }
+  
+  /* Reset font-weight  */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    font-weight: 400;
+  }
+html, body {
+    margin: 0;
+    padding: 0;
+}
+/* set up the body */
+body {
+    font-family: var(--ff-sans-inter);
+    font-size: var(--fs-400);
+    color: hsl(var(--clr-very-dark-blue));
+    background-color: hsl(var(--clr-off-white));
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* make images easier to work with */
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* make from elements easier to work with */
+  
+  button,
+  select {
+    font: inherit;
+  }
+  
+  /* remove animations for people who've turned them off */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* ------------------- */
+  /* Utility class       */
+  /* ------------------- */
+  
+  /* genral */
+  
+  .flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+  }
+  
+  .grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+  }
+  
+  .container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
+  }
+  
+  .flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1rem);
+    /* outline: 1px solid green; */
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+  }
+  
+  /* colors */
+  
+  .bg-dark {
+    background-color: hsl (var(--clr-very-dark-blue));
+  }
+  .bg-white {
+    background-color: hsl (var(--clr-off-white));
+  }
+  .bg-red {
+    background-color: hsl (var(--clr-primary-soft-red));
+  }
+  
+  .text-dark {
+    color: hsl(var(--clr-very-dark-blue));
+  }
+  .text-white {
+    color: hsl(var(--clr-off-white));
+  }
+  .text-organe {
+    color: hsl(var(--clr-primary-soft-orange));
+  }
+  
+  /* typograpghy */
+  
+  .ff-sans-inter {
+    font-family: var(--ff-sans-inter);
+  }
+  
