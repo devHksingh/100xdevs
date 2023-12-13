@@ -58,7 +58,7 @@ hello world my name is raman
 //     })
 
 const fs = require('fs')
-// const { resolve } = require('path')
+
 
 function readFile(){
     return new Promise((resolve,reject)=>{
