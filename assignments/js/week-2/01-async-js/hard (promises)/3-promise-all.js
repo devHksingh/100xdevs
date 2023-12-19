@@ -5,18 +5,36 @@
  */
 
 
-function waitOneSecond() {
+function waitOneSecond(n) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve()
+        },n*1000)
+    })
 
 }
 
-function waitTwoSecond() {
-
+function waitTwoSecond(n) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve()
+        },n*1000)
+    })
 }
 
-function waitThreeSecond() {
-
+function waitThreeSecond(n) {
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve()
+        },n*1000)
+    })
 }
 
-function calculateTime() {
-
+async function calculateTime(n,m,p) {
+    const startDate = new Date()
+    await Promise.all([waitOneSecond(n),waitTwoSecond(m),waitThreeSecond(p)])
+    const afterDate = new Date()  
+    return afterDate-startDate         
 }
+
+module.exports = calculateTime
