@@ -18,4 +18,51 @@ const path = require('path');
 const app = express();
 
 
+
+// app.get("/files",(req,res)=>{
+//   const test= fs.readdirSync("./files","utf-8")
+//   res.json({
+//     files:test
+//   })
+// })
+
+
+
+app.get("/files",(req,res)=>{
+  fs.readdir("./files","utf-8",(err,data)=>{
+    if(err){
+      return res.status(500).json({error:`Failed to retrieve files`})
+    }else{
+      return res.send(data)
+    }
+  })
+})
+
+
+app.get("/file/:filename",(req,res)=>{
+  const filePath = path.join("./files",req.params.filename)
+  fs.readFile(filePath,"utf-8",(err,data)=>{
+    if(err){
+      return res.status(404).json({error:'File not found'})
+    }else{
+      return res.send(data)
+    }
+  })
+})
+
+app.all("*",(req,res)=>{
+  res.status(404).send("file not found")
+})
+
+
+app.listen(3000)
+
 module.exports = app;
+
+/*
+What are the common status codes the backend responds with?
+1. 200 - Everything is ok
+2. 404 - Page/route not found
+3. 403 - Authentication issues
+4. 500 - Internal server error
+*/
