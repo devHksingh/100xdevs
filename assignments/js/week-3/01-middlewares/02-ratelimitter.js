@@ -17,10 +17,17 @@ setInterval(() => {
 }, 1000)
 
 app.use(function(req,res,next){
-  if(numberOfRequestsForUser){
-    if(numberOfRequestsForUser<5){
-      numberOfRequestsForUser +=1
+  const userId = req.header["user-id"]
+  if(numberOfRequestsForUser[userId]){
+    if(numberOfRequestsForUser[userId] < 5){
+      numberOfRequestsForUser[userId] +=1
+      next()
+    }else{
+      res.status(404).send("request out of limit")
     }
+  }else{
+    numberOfRequestsForUser[userId] =1
+    next()
   } 
 })
 
