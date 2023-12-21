@@ -18,15 +18,7 @@ const path = require('path');
 const app = express();
 
 
-
-// app.get("/files",(req,res)=>{
-//   const test= fs.readdirSync("./files","utf-8")
-//   res.json({
-//     files:test
-//   })
-// })
-
-
+// 1. GET /files - Returns a list of files present in `./files/` directory
 
 app.get("/files",(req,res)=>{
   fs.readdir("./files","utf-8",(err,data)=>{
@@ -38,6 +30,7 @@ app.get("/files",(req,res)=>{
   })
 })
 
+//2. GET /file/:filename - Returns content of given file by name
 
 app.get("/file/:filename",(req,res)=>{
   const filePath = path.join("./files",req.params.filename)
@@ -49,6 +42,8 @@ app.get("/file/:filename",(req,res)=>{
     }
   })
 })
+
+// 3. For any other route not defined in the server return 404
 
 app.all("*",(req,res)=>{
   res.status(404).send("file not found")
