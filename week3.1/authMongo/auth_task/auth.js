@@ -85,7 +85,7 @@ app.post('/api/signin',(req,res)=>{
             msg:`User: ${name}, is not found `
         })
     }
-    const token = jwt.sign({userName:`${name}`},privateKey,{algorithm:'HS256',expiresIn:'20m'})
+    const token = jwt.sign({username:name},privateKey,{algorithm:'HS256',expiresIn:'1h'})
     return res.json({
         token,
     })
@@ -93,23 +93,24 @@ app.post('/api/signin',(req,res)=>{
 
 app.get('/api/users',(req,res)=>{
     const token = req.headers.authorization
+    
     try {
         const decoded = jwt.verify(token,privateKey)
-        const username = decoded.username
-        let displayInfo = []
-        ALL_USERS.map((ele)=>{
-            if(!ele.username===username){
-                displayInfo.push(ele)
-            }
-        })
-        return res.status(200).json({
+        const decodedUsername = decoded.username
+        console.log(decodedUsername);
+        let displayInfo = ALL_USERS.filter((ele)=>ele.username !==decodedUsername)
+        res.json({
+            decodedUsername,
             displayInfo
         })
+        
     } catch (error) {
-        return res.status(403).json({
-            msg:"Invalid token"
+        res.json({
+            err:error
         })
     }
+
+    
 })
 
 
