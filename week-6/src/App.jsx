@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import axios from 'axios'
+// import axios from 'axios'
 import Timer from './components/Timer'
 import Stopwatch from './components/Stopwatch'
 
@@ -20,7 +20,7 @@ function App() {
   )
 }
 
-function Todo({id}){
+// function Todo({id}){
   // const [todo,setTodo] = useState({})
   // useEffect
 
@@ -56,17 +56,17 @@ function Todo({id}){
 
   // },[])
 
-  useEffect(()=>{
-    console.log('App component is Mounting .......');
-  },[])
+  // useEffect(()=>{
+  //   console.log('App component is Mounting .......');
+  // },[])
 
-  return <div>
-    {/* <h1>{todo.title}</h1> */}
-    {/* <h4>{todo.description}</h4> */}
+//   return <div>
+//     {/* <h1>{todo.title}</h1> */}
+//     {/* <h4>{todo.description}</h4> */}
     
     
-  </div>
+//   </div>
 
-}
+// }
 
 export default App
