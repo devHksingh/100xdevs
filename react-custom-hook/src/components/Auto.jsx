@@ -27,7 +27,7 @@ function Auto() {
   function Track({ todo }) {
     return (
       <div>
-        <h1>{todo.price}</h1>
+        <h1>{todo.image}</h1>
       </div>
     );
   }

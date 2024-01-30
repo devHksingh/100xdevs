@@ -64,7 +64,7 @@ function App() {
   return (
     <>
       <div>
-      <Auto/>
+      {/* <Auto/> */}
         {/* {currentTodos.map((todo) => (
           
           <Track key={todo.id} todo={todo} />
