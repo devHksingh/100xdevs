@@ -3,14 +3,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons"
 import { useState } from 'react'
 
+import useSWR from 'swr'
+
+import {
+    getTodos,
+    
+    updateTodo,
+    deleteTodo,
+    todosUrlEndpoint as cacheKey,
+
+} from '../../api/todosApi'
+
+import {
+    addMutation as addTodo,
+    addTodoOptions,
+} from '../../helpers/todoMutations'
+
 const TodoList = () => {
     const [newTodo, setNewTodo] = useState('')
 
     // Add useSWR here
+    const {
+        isLoading,
+        error,
+        data:todos,
+        mutate,
+    }= useSWR(cacheKey,getTodos,{
+        onSuccess: data => data.sort((a,b) => b.id - a.id)
+    })
 
     const addTodoMutation = async (newTodo) => {
         try {
             // call API & mutate here
+            mutate(
+                addTodo(newTodo,todos),
+                addTodoOptions(newTodo,todos)
+            )
 
             toast.success("Success! Added new item.", {
                 duration: 1000,
@@ -26,6 +54,8 @@ const TodoList = () => {
     const updateTodoMutation = async (updatedTodo) => {
         try {
             // call API & mutate here
+            await updateTodo(updatedTodo)
+            mutate()
 
             toast.success("Success! Updated item.", {
                 duration: 1000,
@@ -41,6 +71,8 @@ const TodoList = () => {
     const deleteTodoMutation = async ({ id }) => {
         try {
             // call API & mutate here
+            deleteTodo({id})
+            mutate()
 
             toast.success("Success! Deleted item.", {
                 duration: 1000,
