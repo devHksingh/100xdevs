@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 } */
+
+#bg-form{
+  
+  background-image: url('../src/assets/bg-sidebar-desktop.svg');
+  background-size: cover;
+}
