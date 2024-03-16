@@ -14,7 +14,7 @@ function Register() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setProgress(66)
-      console.log(progress);
+      // console.log(progress);
       
     
     }, 500)

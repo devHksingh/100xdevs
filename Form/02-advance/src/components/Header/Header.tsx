@@ -14,7 +14,7 @@ function Header() {
 
         <nav className='border-b border-red-400 px-4 lg:px-6 py-2.5 flex justify-between'>
           <Link className='flex items-center' to='/'>
-            Logo
+            <Button variant="link">Logo</Button>
           </Link>
 
           <div className='flex  items-center  lg:order-2'>
@@ -23,7 +23,7 @@ function Header() {
             </Link>
 
             <Link className='lg:mr-6' to={'#'}>
-              <Button variant="ghost" className=' hover:border-e border-red-400'>Profile</Button>
+              <Button variant="ghost" className=' hover:border-e border-red-400 mr-4'>Profile</Button>
             </Link>
 
             <ModeToggle/>
