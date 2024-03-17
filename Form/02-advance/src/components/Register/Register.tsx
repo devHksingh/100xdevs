@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/resizable"
 
 import { Progress } from "@/components/ui/progress"
+import UserInfoForm from '../Form/UserInfoForm'
 
 function Register() {
   const [progress, setProgress] = useState(13)
@@ -79,7 +80,8 @@ function Register() {
           <ResizablePanel defaultSize={92}>
             <div className="flex h-full items-center justify-center p-6">
               <span className="font-semibold">Three
-              {/* <Progress value={33} /> */}
+              
+              <UserInfoForm/>
               </span>
             </div>
           </ResizablePanel>

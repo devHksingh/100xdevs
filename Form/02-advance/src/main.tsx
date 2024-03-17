@@ -12,7 +12,8 @@ import UserForm from './components/UserForm/UserForm.tsx'
 import AddressForm from './components/AddressForm/AddressForm.tsx'
 import LoginForm from './components/LoginForm/LoginForm.tsx'
 import Login from './components/Login/Login.tsx'
-
+import { store } from './app/store.ts'
+import { Provider } from 'react-redux'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,7 +32,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <Provider store={store}>
     <RouterProvider router={router}/>
+    
     <App />
+    </Provider>
   </React.StrictMode>,
 )

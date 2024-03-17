@@ -63,7 +63,7 @@ export const UserFormSchema = z
                                             street: z   
                                                 .string().trim()
                                                 .min(4,{message: 'Street must be 5 or more characters long'}),
-                                             city: z
+                                            city: z
                                                 .string().trim()
                                                 .min(2,{message:'City must be 2 or more characters long'}),
                                             state: z
@@ -84,6 +84,6 @@ export const UserFormSchema = z
                                     })
                                     
                                 })
-                                .partial()
+                                
 
 export type FormSchema = z.infer<typeof UserFormSchema>
