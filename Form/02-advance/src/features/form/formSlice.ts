@@ -1,71 +1,88 @@
-import { FormSchema } from "@/models/UserForm-model";
+// import { FormSchema } from "@/models/UserForm-model";
+import { UserFormComplete } from "@/models/UserForm-model";
 import { createSlice } from "@reduxjs/toolkit";
 
 
 
-const initialState:FormSchema ={
-    currentStep:1,
-    fromError:'',
-    stepOneForm:{
-        isCompleted:false
+const initialState:UserFormComplete ={
+    formState:{
+        currentStep:1,
+        fromError:'',
+        stepOneForm:{
+            isCompleted:false
+        },
+        stepTwoForm:{
+            isCompleted:false
+        },
+        stepThreeForm:{
+            isCompleted:false
+        }
     },
-    stepTwoForm:{
-        isCompleted:false
-    },
-    stepThreeForm:{
-        isCompleted:false
-    },
+
     formData:{
         firstName:'',
         lastName:"",
-        email  :'',
         phone : 99,
         website :'',
         title :'Mr',
         role :'SD1',
+    },
+    loginData:{
+        email  :'',
         userPassword:{
             password:'',
             confirmPassword:''
         },
-        address:{
+        userId:23,
+    },
+        
+    address:{
             street:'',
             city:'',
             state:'',
             zipcode:''
         },
-        id:23,
+        
     }
-}
+
+
+
 
 export const formSlice = createSlice({
     name:'newUserForm',
     initialState,
     reducers:{
         nextFormStep:(state)=>{
-            state.currentStep += 1;
+            state.formState.currentStep += 1;
         },
         prevFormStep:(state)=>{
-            state.currentStep -=1
+            state.formState.currentStep -=1
         },
         isFormOne:(state)=>{
-            state.stepOneForm.isCompleted = true;
+            state.formState.stepOneForm.isCompleted = true;
         },
         isFormTwo:(state)=>{
-            state.stepTwoForm.isCompleted =true
+            state.formState.stepTwoForm.isCompleted =true
         },
         isFormThree:(state)=>{
-            state.stepThreeForm.isCompleted =true
+            state.formState.stepThreeForm.isCompleted =true
         },
         setFormError:(state,action)=>{
-            state.fromError= action.payload
+            state.formState.fromError= action.payload
         },
         setFormData:(state,action)=>{
             state.formData = action.payload
+        },
+        setFormLoginData:(state,action)=>{
+            state.loginData = action.payload
+        },
+        setFormAddressData:(state,action)=>{
+            state.address = action.payload
         }
 
     }
 })
 
-export const {nextFormStep,prevFormStep,isFormOne,isFormTwo,isFormThree,setFormError,setFormData} = formSlice.actions
+export const {nextFormStep,prevFormStep,isFormOne,isFormTwo,isFormThree,setFormError,setFormData,setFormLoginData,setFormAddressData} = formSlice.actions
 
 export default formSlice.reducer
