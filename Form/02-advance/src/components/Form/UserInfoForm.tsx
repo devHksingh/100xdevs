@@ -73,15 +73,15 @@ function UserInfoForm() {
     <div>
         <h2 className="mb-4">UserInfoForm</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4  ">
             <label htmlFor="title">Title</label>
             
-            {/* <select name="title" className="text-black">
+            <select name="formData.title" className="text-black">
                 <option value="Mr">Mr</option>
                 <option value="Mrs">Mrs</option>
                 <option value="Miss">Miss</option>
                 <option value="Dr">Dr</option>
-            </select> */}
+            </select>
 
             {/* <Controller
                 name="formData.title"
@@ -100,7 +100,7 @@ function UserInfoForm() {
             >
                 
             </Controller> */}
-            <Controller
+            {/* <Controller
         control={control}
         name="formData.title"
         render={({ field }) => (
@@ -111,18 +111,25 @@ function UserInfoForm() {
             onChange={(selectedOption) => field.onChange(selectedOption.value)}
           />
         )}
-      />
+      /> */}
+
+{/* <select className="text-black bg-slate-400" {...register("formData.title", { required: true })}>
+        <option value="Mr">Mr</option>
+        <option value="Mrs">Mrs</option>
+        <option value="Miss">Miss</option>
+        <option value="Dr">Dr</option>
+      </select> */}
 
             {errors.formData?.title && <p className="bg-yellow-100 text-red-500 italic px-2 py-1 rounded-md self-start">
                         {errors.formData.title?.message}
                     </p>}
             <Label >Frist Name:</Label>
-            <input className="text-black" {...register('formData.firstName',{ required:true})}/>
+            <input className="text-black bg-slate-400" {...register('formData.firstName',{ required:true})}/>
             {errors.formData?.firstName && <p className="bg-yellow-100 text-red-500 italic px-2 py-1 rounded-md self-start">
                         {errors.formData.firstName?.message}
                     </p>}
             <Label >Last Name:</Label>
-            <input className="text-black" {...register('formData.lastName',{ required:true})}/>
+            <input className="text-black bg-slate-400" {...register('formData.lastName',{ required:true})}/>
 
             {errors.formData?.lastName && <p className="bg-yellow-100 text-red-500 italic px-2 py-1 rounded-md self-start">
                         {errors.formData.lastName?.message}
@@ -132,20 +139,27 @@ function UserInfoForm() {
 
             <label htmlFor="role">Role</label>
             
-            <select name="role" className="text-black">
+            {/* <select name="role" className="text-black">
                 <option value="SD1">SD1</option>
                 <option value="SD2">SD2</option>
                 <option value="SD3">SD3</option>
                 <option value="TeamLead">TeamLead</option>
                 <option value="Manager">Manager</option>
-            </select>
+            </select> */}
+            <select className="text-black bg-slate-400" {...register("formData.role", { required: true })}>
+            <option value="SD1">SD1</option>
+                <option value="SD2">SD2</option>
+                <option value="SD3">SD3</option>
+                <option value="TeamLead">TeamLead</option>
+                <option value="Manager">Manager</option>
+      </select>
 
             {errors.formData?.role && <p className="bg-yellow-100 text-red-500 italic px-2 py-1 rounded-md self-start">
                         {errors.formData.role?.message}</p>}
             
 
             <label htmlFor="website">website</label>
-            <input className="text-black" id="website" {...register('formData.website')}></input>
+            <input className="text-black bg-slate-400" id="website" {...register('formData.website')}></input>
 
             {errors.formData?.website && <p className="bg-yellow-100 text-red-500 italic px-2 py-1 rounded-md self-start">
                         {errors.formData.website?.message}</p>}
