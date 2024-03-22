@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  daisyui: {
+    themes: ["cupcake", "dark", "cmyk","luxury"],
+  },
+  
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -73,5 +77,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),
+          require("daisyui")],
+  // plugins: [require("daisyui")],
 }
