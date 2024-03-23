@@ -14,6 +14,27 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"
+//   import { toast } from "@/components/ui/use-toast"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+  } from "@/components/ui/popover"
+
+  import { Calendar } from "@/components/ui/calendar"
+  import { cn } from "@/lib/utils"
+  import { format } from "date-fns"
+import { CalendarIcon } from '@radix-ui/react-icons';
+//   import { CalendarIcon } from "lucide-react"
+
+
 
 
 enum GenderEnum{
@@ -63,13 +84,13 @@ function ShadcnForm() {
       // 1. Define your form.
     const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
-    defaultValues: {
-        title: "Mr",
-        fullName:'',
-        gender: 'Male',
-        role: 'SD2',
-        age:new Date
-    },
+    // defaultValues: {
+    //     title: "Mr",
+    //     fullName:'',
+    //     gender: 'Male',
+    //     role: 'SD2',
+    //     age:new Date
+    // },
   })
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof schema>) {
@@ -160,6 +181,63 @@ function ShadcnForm() {
             {/* shadcn form */}
             <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <FormField
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a verified email to display" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                    
+                  <SelectItem value="Mr">Mr</SelectItem>
+                  <SelectItem value="Mrs">Mrs</SelectItem>
+                  <SelectItem value="Miss">Miss</SelectItem>
+                  <SelectItem value="Dr">Dr</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <a href="/examples/forms">email settings</a>.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Gender</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your gender" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                    {/* 'Mr','Mrs','Miss','Dr' */}
+                  <SelectItem value="Male">Male</SelectItem>
+                  <SelectItem value="Female">Female</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
+                  
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <a href="/examples/forms">email settings</a>.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="fullName"
@@ -171,6 +249,87 @@ function ShadcnForm() {
               </FormControl>
               <FormDescription>
                 This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Role</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your Role" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                    {/* 'SD1','SD2','SD3','TeamLead','Manager' */}
+                  <SelectItem value="SD1">SD1</SelectItem>
+                  <SelectItem value="SD2">SD2</SelectItem>
+                  <SelectItem value="SD3">SD3</SelectItem>
+                  <SelectItem value="TeamLead">TeamLead</SelectItem>
+                  <SelectItem value="Manager">Manager</SelectItem>
+                  
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                You can manage email addresses in your{" "}
+                <a href="/examples/forms">email settings</a>.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
+        <FormField
+          control={form.control}
+          name="age"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Date of birth</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "w-[240px] pl-3 text-left font-normal bg-transparent",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50 " />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    captionLayout="dropdown-buttons" fromYear={1915} toYear={2085}
+                    
+                    // className='bg-transparent'
+                    className='rounded-lg bg-slate-400 FormTest'
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    // disabled={(date) =>
+                    //   date > new Date() || date < new Date("1900-01-01")
+                    // }
+                    
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormDescription>
+                Your date of birth is used to calculate your age.
               </FormDescription>
               <FormMessage />
             </FormItem>
