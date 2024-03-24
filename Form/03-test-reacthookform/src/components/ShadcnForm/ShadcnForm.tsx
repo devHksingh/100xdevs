@@ -1,7 +1,7 @@
 import {z} from 'zod'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { title } from 'process';
+// import { title } from 'process';
 
 import { Button } from "@/components/ui/button"
 import {
@@ -37,35 +37,35 @@ import { CalendarIcon } from '@radix-ui/react-icons';
 
 
 
-enum GenderEnum{
-    female='female',
-    male ="male",
-    other= "other"
-}
+// enum GenderEnum{
+//     female='female',
+//     male ="male",
+//     other= "other"
+// }
 
-enum TitleEnum {
-    Mr='Mr',
-    Mrs='Mrs',
-    Miss='Miss',
-    Dr = 'Dr'
-}
+// enum TitleEnum {
+//     Mr='Mr',
+//     Mrs='Mrs',
+//     Miss='Miss',
+//     Dr = 'Dr'
+// }
 
-enum RoleEnum {
-    SD1 ='SD1',
-    SD2 ='SD2',
-    SD3 ='SD3',
-    Manager = 'Manager',
-    TeamLead = 'TeamLead',
-}
+// enum RoleEnum {
+//     SD1 ='SD1',
+//     SD2 ='SD2',
+//     SD3 ='SD3',
+//     Manager = 'Manager',
+//     TeamLead = 'TeamLead',
+// }
 
 
-interface InfoForm {
-    title:TitleEnum
-    fullName:string
-    gender:GenderEnum
-    role:RoleEnum
-    age:Date
-}
+// interface InfoForm {
+//     title:TitleEnum
+//     fullName:string
+//     gender:GenderEnum
+//     role:RoleEnum
+//     age:Date
+// }
 
 
 const schema = z.object({

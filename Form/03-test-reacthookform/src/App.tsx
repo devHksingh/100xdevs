@@ -1,6 +1,7 @@
 
 import './App.css'
-import ShadcnForm from './components/ShadcnForm/ShadcnForm'
+import DaisyUiForm from './components/DaisyUiForm/DaisyUiForm'
+// import ShadcnForm from './components/ShadcnForm/ShadcnForm'
 // import Test from './components/TestForm/Test'
 // import FormOne from './components/FormOne/FormOne'
 // import FormTwo from './components/FormTwo/FormTwo'
@@ -15,7 +16,8 @@ function App() {
       <FormOne/> */}
       {/* <FormTwo/> */}
       {/* <UiForm/> */}
-      <ShadcnForm/>
+      {/* <ShadcnForm/> */}
+      <DaisyUiForm/>
     </div>
   )
 }
