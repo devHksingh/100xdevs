@@ -1,6 +1,7 @@
 
 import './App.css'
-import DaisyUiForm from './components/DaisyUiForm/DaisyUiForm'
+// import DaisyUiForm from './components/DaisyUiForm/DaisyUiForm'
+import LoginForm from './components/LoginForm/LoginForm'
 // import ShadcnForm from './components/ShadcnForm/ShadcnForm'
 // import Test from './components/TestForm/Test'
 // import FormOne from './components/FormOne/FormOne'
@@ -11,13 +12,14 @@ function App() {
   
 
   return (
-    <div className='h-screen w-full p-12  bg-slate-950 text-white'>
+    <div className='w-full h-screen p-12 text-white bg-slate-950'>
       {/* <Test/>
       <FormOne/> */}
       {/* <FormTwo/> */}
       {/* <UiForm/> */}
       {/* <ShadcnForm/> */}
-      <DaisyUiForm/>
+      {/* <DaisyUiForm/> */}
+      <LoginForm/>
     </div>
   )
 }
