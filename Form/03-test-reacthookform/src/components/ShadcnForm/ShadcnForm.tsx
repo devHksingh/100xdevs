@@ -32,6 +32,8 @@ import {
   import { cn } from "@/lib/utils"
   import { format } from "date-fns"
 import { CalendarIcon } from '@radix-ui/react-icons';
+import { useAppDispatch } from '@/app/hooks';
+import { updateInfoForm } from '@/features/userForm/formSlice';
 //   import { CalendarIcon } from "lucide-react"
 
 
@@ -96,6 +98,7 @@ function ShadcnForm() {
   function onSubmit(values: z.infer<typeof schema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    useAppDispatch(updateInfoForm(values))
     console.log(values)
   }
   return (
@@ -336,6 +339,7 @@ function ShadcnForm() {
           )}
         />
         <Button type="submit">Submit</Button>
+        {/* <Button value={'disable'} >Prev</Button> */}
       </form>
     </Form>
 

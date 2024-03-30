@@ -16,7 +16,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<Home/>} />
-      <Route path='infoForm' element={<ShadcnForm/>} />
+      <Route path='/infoForm' element={<ShadcnForm/>} />
       <Route path='accountForm' element={<DaisyUiForm/>} />
       <Route path='loginForm' element={<LoginForm/>} />
 
