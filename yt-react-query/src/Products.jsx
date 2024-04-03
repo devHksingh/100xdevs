@@ -1,33 +1,47 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {useQuery} from '@tanstack/react-query'
+
+const fetchProducts = async ()=>{
+    const response = await fetch('https://dummyjson.com/products')
+    const data = await response.json()
+    
+    return data.products
+    
+
+}
 
 function Products() {
-    const [products,setProducts] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [errors,setErrors] = useState(null)
 
-    useEffect(()=>{
-        const fetchProducts = async ()=>{
-            setIsLoading(true)
-            setErrors(null)
+    const {isLoading,error,data:products} = useQuery({queryKey:["products"],queryFn: fetchProducts,staleTime:60*1000})
+    
+    // const [products,setProducts] = useState([])
+    // const [isLoading, setIsLoading] = useState(false)
+    // const [errors,setErrors] = useState(null)
+
+    // useEffect(()=>{
+    //     const fetchProducts = async ()=>{
+    //         setIsLoading(true)
+    //         setErrors(null)
             
-            try {
+    //         try {
 
-                const response = await fetch('https://dummyjson.com/products')
-                const data = await response.json()
-                setIsLoading(false)
-                setProducts(data.products)
-                console.log(data.products);
+    //             const response = await fetch('https://dummyjson.com/products')
+    //             const data = await response.json()
+    //             setIsLoading(false)
+    //             setProducts(data.products)
+    //             console.log(data.products);
                 
-            } catch (error) {
-                setErrors(error.message)
-                setIsLoading(false)
-            }
+    //         } catch (error) {
+    //             setErrors(error.message)
+    //             setIsLoading(false)
+    //         }
             
 
-        }
+    //     }
 
-        fetchProducts()
-    },[])
+    //     fetchProducts()
+    // },[])
 
     if(isLoading){
         return (
@@ -103,10 +117,10 @@ function Products() {
         )
     }
 
-    if(errors){
+    if(error){
         return (
             <div>
-                <h3 className="text-red-600" >ERROR :{errors}</h3>
+                <h3 className="text-red-600" >ERROR :{error.message}</h3>
             </div>
         )
     }
@@ -130,10 +144,10 @@ function Products() {
               <div className="flex justify-between mt-4">
                 <div>
                   <h3 className="text-sm text-gray-200">
-                    <a href={'#'}>
+                    <Link to={`/products/${product.id}`}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.title}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="mt-1 text-sm text-green-400">{product.category}</p>
                 </div>
