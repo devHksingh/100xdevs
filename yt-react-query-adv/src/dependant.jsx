@@ -18,10 +18,13 @@ const Dependant = () => {
         queryKey: ['post'],
         queryFn: () => fetchPostById(2),
     });
+    
+    const postId = post?.id
 
     const { data: comments } = useQuery({
         queryKey: ['comments', post?.id],
         queryFn: () => fetchCommentsByPostId(post.id),
+        enabled: !!postId
     });
 
     return (
