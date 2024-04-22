@@ -1,13 +1,38 @@
 import {useForm} from "react-hook-form"
-
+import axios from 'axios'
 
 
 function LoginForm() {
 
     const {register,handleSubmit} = useForm()
     
-    const onSubmit = (data)=>{
+    const onSubmit = async (data)=>{
         console.log(data);
+        const {name,email,password} = data
+        console.log(name);
+        console.log(email);
+        console.log(data.password);
+
+        // axios.post('http://localhost:5513/api/users/register',{
+        //     name:data.name,
+        //     email:data.email,
+        //     password:data.password
+        // })
+        //  .then((response)=>{
+        //     console.log(response)
+        //     console.log(typeof(response))
+        //  })
+        //  .catch((error)=>{
+        //     console.log(error);
+        //  })
+
+        try{
+            const response = await axios.post('http://localhost:5513/api/users/register',data)
+            console.log(response.data);
+        }catch(error){
+            console.log(error);
+        }
+        
     }
   return (
     <div className="min-h-screen hero bg-base-200">
