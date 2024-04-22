@@ -8,10 +8,10 @@ function LoginForm() {
     
     const onSubmit = async (data)=>{
         console.log(data);
-        const {name,email,password} = data
-        console.log(name);
-        console.log(email);
-        console.log(data.password);
+        // const {name,email,password} = data
+        // console.log(name);
+        // console.log(email);
+        // console.log(data.password);
 
         // axios.post('http://localhost:5513/api/users/register',{
         //     name:data.name,
