@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@radix-ui/react-label"
+import { Label } from "@/components/ui/label"
+import { Link } from "react-router-dom"
+
 
 
 const LoginPage = () => {
@@ -24,8 +26,14 @@ const LoginPage = () => {
             <Input id="password" type="password" required />
             </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col">
             <Button className="w-full">Sign in</Button>
+            <div className="mt-4 text-sm text-center">
+              Don't have an account?{" "}
+              <Link to={'/register'} className="underline">
+                Sign up
+              </Link>
+            </div>
         </CardFooter>
             </Card>
     </section>
