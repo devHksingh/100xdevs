@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy":"http://localhost:5513",
+  "proxy": "http://localhost:5513",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -29,7 +29,8 @@
     "react-router-dom": "^6.23.0",
     "sort-by": "^0.0.2",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
