@@ -45,7 +45,7 @@ const LoginPage = () => {
             <CardTitle className="text-2xl">Login</CardTitle>
             <CardDescription>
             Enter your email below to login to your account.
-            {/* {mutation.isPending && <h1 className="text-4xl font-bold text-center text-red-500">Loading....</h1> } */}
+            {mutation.isError && <span className="inline-block text-sm text-red-600">{mutation.error.message}</span> }
             </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
