@@ -33,10 +33,7 @@ const LoginPage = () => {
     if(!email || !password){
       return alert('Please enter email and password')
     }
-    mutation.mutate({email,password})
-    
-    
-    
+    mutation.mutate({email,password})    
   }
   return (
     <section className="flex items-center justify-center h-screen">
