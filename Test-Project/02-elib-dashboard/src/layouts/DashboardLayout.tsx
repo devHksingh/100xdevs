@@ -35,10 +35,17 @@ import useTokenStore from "@/store"
 
 
 const DashboardLayout = () => {
-  const token = useTokenStore(state => state.token)
+  const {token,setToken} = useTokenStore(state => state)
   
   if(!token){
     return <Navigate to={'/auth/login'} replace/>
+  }
+  
+  
+  const handleLogout = ()=>{
+    setToken("")
+    console.log('user logout');
+    
   }
   return (
 
@@ -197,7 +204,13 @@ const DashboardLayout = () => {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Button variant={'link'}
+                  onClick={handleLogout}
+                >
+                   Logout
+                </Button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
