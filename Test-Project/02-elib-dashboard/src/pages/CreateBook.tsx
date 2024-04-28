@@ -11,7 +11,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { createBook } from "@/http/api"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const formSchema = z.object({
     title: z.string().min(2, {
@@ -97,11 +97,12 @@ const CreateBook = () => {
                     </BreadcrumbList>
                 </Breadcrumb>
                 <div className="flex items-center space-x-2">
-                    
-                        <Button variant={"outline"} >
-                            <Ban size={20}/>
-                            <span className="ml-2">Cancel</span>
-                        </Button>
+                        <Link to={'/dashboard/books'}>
+                            <Button variant={"outline"} >
+                                <Ban size={20}/>
+                                <span className="ml-2">Cancel</span>
+                            </Button>
+                        </Link>
                         <Button type="submit" disabled={mutation.isPending}>
                             {mutation.isPending?  <Loader2 className="mr-2 animate-spin"/>:<Upload size={20}/>}
                             
