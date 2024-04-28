@@ -67,7 +67,7 @@ const BooksPage = () => {
                     </BreadcrumbList>
                 </Breadcrumb>
                 <Link to="/dashboard/books/create">
-                    <Button>
+                    <Button >
                         <CirclePlus size={20} />
                         <span className="ml-2">Add book</span>
                     </Button>
