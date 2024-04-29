@@ -1,4 +1,4 @@
-import { Link, Navigate, Outlet } from "react-router-dom"
+import { Link, Navigate, NavLink, Outlet } from "react-router-dom"
 import {
   Bell,
   CircleUser,
@@ -64,21 +64,27 @@ const DashboardLayout = () => {
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <Link
-                to="/dashboard/home"
-                className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-muted-foreground hover:text-primary"
-              >
-                <Home className="w-4 h-4" />
-                Home
-              </Link>
-              
-              <Link
-                to="/dashboard/books"
-                className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg bg-muted text-primary hover:text-primary"
-              >
-                <Package className="w-4 h-4" />
-                Book's{" "}
-              </Link>
+            <NavLink
+                                to="/dashboard/home"
+                                className={({ isActive }) => {
+                                    return `flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
+                                        isActive && 'bg-muted'
+                                    }`;
+                                }}>
+                                <Home className="w-4 h-4" />
+                                Home
+                            </NavLink>
+
+                            <NavLink
+                                to="/dashboard/books"
+                                className={({ isActive }) => {
+                                    return `flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
+                                        isActive && 'bg-muted'
+                                    }`;
+                                }}>
+                                <Package className="w-4 h-4" />
+                                Books{' '}
+                            </NavLink>
               
             </nav>
           </div>
