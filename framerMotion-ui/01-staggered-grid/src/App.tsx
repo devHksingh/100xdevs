@@ -2,17 +2,19 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
+import WaterDropGrid from './components/WaterDropGrid'
 
 function App() {
   
 
   return (
     <>
-      <div>
+      {/* <div>
         <h1 className="text-3xl font-bold underline">
         Hello world!
         </h1>
-      </div>
+      </div> */}
+      <WaterDropGrid/>
     </>
   )
 }
