@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom"
+import {  useOutletContext,Link } from "react-router-dom"
+
 
 
 const BookList = () => {
+  const books = useOutletContext()
+  console.log(books);
   return (
     <div>
       <h1>BookList</h1>
-      <Link to="/books/1">Book 1</Link><br/>
-      <Link to="/books/2">Book 2</Link><br/>
-      <Link to="/books/new">New Book</Link><br/>
+      <div>{books.map((book)=>(<div key={book.id}>
+        <Link to={`/books/${book.id}`}>{book.name}</Link>
+      </div>))}</div>
       
     </div>
   )
