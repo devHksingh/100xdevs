@@ -27,7 +27,7 @@ function App() {
         {/* Nested Routes */}
         <Route index element={<BookList/>}/>
         <Route path=':id' element={<Book/>}/>
-
+        <Route path='new' element={<NewBook/>}/>
       </Route>
       
 
