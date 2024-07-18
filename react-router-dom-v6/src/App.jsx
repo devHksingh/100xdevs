@@ -19,7 +19,11 @@ function App() {
       <ul>
         <li><NavLink 
         style={({isActive}) => {return isActive ? {color:"greenyellow"}:{color:"red"}}}
-        to={'/'}>Home</NavLink></li>
+        to={'/'}>
+          {({isActive})=>{
+            return isActive? "Active Home":"Home"
+          }}
+          </NavLink></li>
         <li><Link to={'/books'}>Books</Link></li>
       </ul>
     </nav>

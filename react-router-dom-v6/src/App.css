@@ -1,0 +1,13 @@
+.active{
+    border:none;
+    text-transform: capitalize;
+    border-bottom: 1px skyblue solid;
+}
+
+ul{
+    list-style-type: none;
+    border:none
+}
+li>a{
+    border:none
+}
